@@ -1,7 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+
 
 public class AppData
 {
+	public bool isValid = false;
+
+	public void Initialize()
+	{
+		if( !isValid )
+		{
+			isValid = true;
+		}
+	}
+	public void Destroy()
+	{
+		isValid = false;
+	}
 }
