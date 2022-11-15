@@ -4,7 +4,7 @@ static public class AppMaster
 {
 	static public bool isValid = false;
 
-	static public AppData appData = null;
+	static public AppData	 appData = null;
 
 	static public void Initialize()
 	{
@@ -16,12 +16,16 @@ static public class AppMaster
 				appData.Initialize();
 			}
 
+			if( !MainUI.isValid ) MainUI.Initialize();
+
 			isValid = true;
 		}
 	}
 	static public void Destroy()
 	{
 		appData?.Destroy();
+
+		MainUI.Destroy();
 
 		isValid = false;
 	}

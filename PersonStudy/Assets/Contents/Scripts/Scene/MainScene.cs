@@ -8,9 +8,7 @@ public class MainScene : MonoBehaviour, IScene
 	{
 		AppMaster.Initialize();
 
-		GameObject ui = AssetManager.Inst.MakeOBJ( "UI/Common/MainUI" );
-
-		GameObject.DontDestroyOnLoad( ui );
+		MainUI.ActiveUI<MainSceneUI>( UI.Root.Scene, UI.Type.SceneUI, new UIResc( "UI/Scene", "MainSceneUI" ), 1, true );
 	}
 	public void OnBack()
 	{

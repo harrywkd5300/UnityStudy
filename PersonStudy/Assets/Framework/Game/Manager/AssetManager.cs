@@ -9,15 +9,19 @@ public class AssetManager : Singleton<AssetManager>
 
 	}
 
+	public GameObject MakeOBJ( GameObject go )
+	{
+		GameObject it = Object.Instantiate( go ) as GameObject;
+
+		return it;
+	}
 	public GameObject MakeOBJ( string path )
 	{
 		GameObject go = LoadResources<GameObject>( path );
 		if( null == go )
 			return null;
 
-		GameObject it = Object.Instantiate( go ) as GameObject;
-
-		return it;
+		return MakeOBJ( go );
 	}
 
 	public RESC LoadResources<RESC>( string path ) where RESC : UnityEngine.Object

@@ -1,6 +1,7 @@
-﻿namespace UI
+﻿
+namespace UI
 {
-	public enum Type
+	public enum Root
 	{
 		None,
 
@@ -10,11 +11,11 @@
 		Max
 	}
 
-	public enum Depth
+	public enum Type
 	{
 		None,
 
-
+		SceneUI = 1,
 
 		Max
 	}
