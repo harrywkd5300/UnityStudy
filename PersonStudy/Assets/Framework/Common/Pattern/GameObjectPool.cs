@@ -148,7 +148,7 @@ public class GameObjectPool : MonoBehaviour
 		GameObjectPool goPool = go.AddComponent<GameObjectPool>();
 		if( goPool == null )
 		{
-			Utility.Log.Error( " >>> [GameObjectPool] component add failed!!" );
+			Utility.Log.Error( "[GameObjectPool]", " >>>component add failed!!" );
 			return null;
 		}
 

@@ -28,7 +28,7 @@ namespace Utility
 			if( true == System.Enum.TryParse( s, out result ) )
 				return true;
 
-			Log.Error( "System.Enum.TryParse()" );
+			Log.Error( "[Parse]", "System.Enum.TryParse()" );
 
 			return false;
 		}
@@ -37,7 +37,7 @@ namespace Utility
 			if( true == int.TryParse( s, out result ) )
 				return true;
 
-			Log.Error( "int.TryParse()" );
+			Log.Error( "[Parse]", "int.TryParse()" );
 
 			return false;
 		}
@@ -46,7 +46,7 @@ namespace Utility
 			if( true == float.TryParse( s, out result ) )
 				return true;
 
-			Log.Error( "float.TryParse()" );
+			Log.Error( "[Parse]", "float.TryParse()" );
 
 			return false;
 		}
@@ -55,7 +55,7 @@ namespace Utility
 			if( true == long.TryParse( s, out result ) )
 				return true;
 
-			Log.Error( "long.TryParse()" );
+			Log.Error( "[Parse]", "long.TryParse()" );
 
 			return false;
 		}
@@ -64,7 +64,7 @@ namespace Utility
 			if( true == System.DateTime.TryParse( s, out result ) )
 				return true;
 
-			Log.Error( "Time.TryParse()" );
+			Log.Error( "[Parse]", "Time.TryParse()" );
 
 			return false;
 		}
@@ -83,7 +83,7 @@ namespace Utility
 				return true;
 			}
 
-			Log.Error( "bool.TryParse()" );
+			Log.Error( "[Parse]", "bool.TryParse()" );
 
 			return false;
 		}	

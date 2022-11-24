@@ -8,30 +8,28 @@ namespace Utility
 
 	static public class Log
 	{
-		const string logChunk = "<color=red>[ERROR]</color>";
-
 		[Conditional( "_TBL_LOG_" ), Conditional( "UNITY_EDITOR" )]
-		static public void Warning( string format, params object[] args )
+		static public void Warning( string tag, string format, params object[] args )
 		{
 			UnityEngine.Debug.LogWarningFormat( "{0:f5}\t{1} {2}"
 				, UnityEngine.Time.realtimeSinceStartup
-				, logChunk
+				, tag
 				, string.Format( format, args )
 				);
 		}
-		static public void Error( string format, params object[] args )
+		static public void Error( string tag, string format, params object[] args )
 		{
-			UnityEngine.Debug.LogErrorFormat( "{0:f5}\t{1} {2}"
+			UnityEngine.Debug.LogErrorFormat( "{0:f5}\t{1} {2} {2}"
 				, UnityEngine.Time.realtimeSinceStartup
-				, logChunk
+				, tag
 				, string.Format( format, args )
 				);
 		}
-		static public void Break( string format, params object[] args )
+		static public void Break( string tag, string format, params object[] args )
 		{
 			UnityEngine.Debug.LogErrorFormat( "{0:f5}\t{1} {2}"
 				, UnityEngine.Time.realtimeSinceStartup
-				, logChunk
+				, tag
 				, string.Format( format, args )
 				);
 
@@ -45,7 +43,7 @@ namespace Utility
 
 			string error = ErrorLogBuild( e );
 
-			Error( error );
+			Error( "[Crash]", error );
 		}
 		static private string ErrorLogBuild( System.Exception e )
 		{

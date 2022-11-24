@@ -26,7 +26,7 @@ public class CanvasDepthManager
 
 			if( null == dMgr )
 			{
-				Utility.Log.Error( "[UI] MainUI_UGUI's DepthManager load failed!" );
+				Utility.Log.Error( "[DepthManager]", "MainUI_UGUI's DepthManager load failed!" );
 				return false;
 			}
 

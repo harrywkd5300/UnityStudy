@@ -169,7 +169,7 @@ static public partial class MainUI
 		GameObject goMain = AssetManager.Inst.MakeOBJ( "UI/Common/MainUI" );
 		if( null == goMain )
 		{
-			Utility.Log.Error( "[UI] MainUI_UGUI object load failed!" );
+			Utility.Log.Error( "[MainUI]", "MainUI_UGUI object load failed!" );
 			return false;
 		}
 
@@ -181,7 +181,7 @@ static public partial class MainUI
 
 		if( null == uiMgr )
 		{
-			Utility.Log.Error( "[UI] MainUI_UGUI's UIManager load failed!" );
+			Utility.Log.Error( "[MainUI]", "MainUI_UGUI's UIManager load failed!" );
 			return false;
 		}
 		UIManager.uiMainMgr = uiMgr;
