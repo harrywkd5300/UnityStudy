@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.Universal;
 
 public class CanvasDepthManager
 {
@@ -34,6 +35,13 @@ public class CanvasDepthManager
 			{
 				depthMgr.Initialize( goRoot );
 			}
+		}
+
+		Camera camera = goRoot.GetComponentInChildren<Camera>();
+		if( null != camera )
+		{
+			UniversalAdditionalCameraData camData = Camera.main?.GetComponent<UniversalAdditionalCameraData>();
+			camData.cameraStack.Add( camera );
 		}
 
 		return true;
