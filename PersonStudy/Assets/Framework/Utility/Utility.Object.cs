@@ -11,6 +11,21 @@ namespace Utility
 				go.SetActive( active );
 		}
 
+		static public bool IsParentObject( GameObject goParent, GameObject goChild )
+		{
+			Transform trans = goChild.transform;
+			Transform parent = goParent.transform;
+
+			while( trans != null )
+			{
+				if( parent == trans )
+					return true;
+
+				trans = trans.parent;
+			}
+			return false;
+		}
+
 		static public bool AttachObject( GameObject goParent, GameObject goChild )
 		{
 			if( null == goParent || null == goChild )
@@ -26,14 +41,14 @@ namespace Utility
 			if( null == goParent || null == goChild )
 				return false;
 
-			goChild.transform.SetParent( goParent.transform );
-			goChild.transform.localPosition = Vector2.zero;
-			goChild.transform.localScale = Vector2.one;
+			RectTransform rt = goChild.GetComponent<RectTransform>();
+			if( rt == null )
+				return false;
 
-			if( goParent.layer != goChild.layer )
-			{
-				SetLayer( goChild, goParent.layer, childLayer );
-			}
+			rt.SetParent( goParent.transform, false );
+			rt.localPosition = Vector3.zero;
+			rt.localScale = Vector3.one;
+
 			return true;
 		}
 
