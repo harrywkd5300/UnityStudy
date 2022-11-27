@@ -15,7 +15,7 @@ namespace UI
 	{
 		None,
 
-		SceneUI = 1,
+		MainSceneUI = 1,
 
 		Max
 	}

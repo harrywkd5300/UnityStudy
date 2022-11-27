@@ -103,8 +103,6 @@ public class UIManager : UIBase
 			return null;
 		}
 
-		//SetCanvasCamera( ui.gameObject );
-
 		return ui;
 	}
 	public T Add<T>( int index, GameObject uiObject, GameObject uiParent, bool _active = false ) where T : UIBase 
@@ -129,7 +127,10 @@ public class UIManager : UIBase
 		if( uiParent == null )
 			uiParent = gameObject;
 
-		Utility.Object.AttachUIObject( uiParent, uiObject );
+		if( true != Utility.Object.IsParentObject( uiParent, uiObject ) )
+		{
+			Utility.Object.AttachUIObject( uiParent, uiObject );
+		}
 
 		//!< (c).Setting.
 		uiBases[ index ] = ui;

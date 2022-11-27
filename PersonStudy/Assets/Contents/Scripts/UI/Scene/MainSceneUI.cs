@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class MainSceneUI : UIBase
 {
-	[SerializeField] Image image = null;
+	public System.Action onClickAssetBundle;
+	public System.Action onClickAddressable;
+	public System.Action onClickGamePlay;
 
 	public override void Init()
 	{
@@ -18,8 +20,16 @@ public class MainSceneUI : UIBase
 		return false;
 	}
 
-	public void OnClick()
+	public void OnClickAssetBundleLoad()
 	{
-		image.color = Color.red;
+		onClickAssetBundle?.Invoke();
+	}
+	public void OnClickAddressable()
+	{
+		onClickAddressable?.Invoke();
+	}
+	public void OnClickInGame()
+	{
+		onClickGamePlay?.Invoke();
 	}
 }
