@@ -24,18 +24,20 @@ public class AppScene : Singleton<AppScene>
 
 	public void OnNextScene( MonoBehaviour mono, SceneType gameScene, int subType, bool force )
 	{
+		bool isAdd = false;
 		//!< special codes.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		switch( gameScene )
 		{
-		case SceneType.GamePlayScene:
+		case SceneType.OcclustionScene:
 			{
-
+				isAdd = true;
+				LoadScene( SceneType.GamePlayScene.ToString() );
 			}
 			break;
 		}
 		//!< ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-		LoadScene( gameScene.ToString() );
+		LoadScene( gameScene.ToString(), isAdd );
 	}
 	public void LoadScene( string sceneName, bool isAdd = false )
 	{

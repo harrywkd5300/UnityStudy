@@ -7,24 +7,27 @@ namespace UI
 {
 	public class UISprite : Image, IStateHandler
 	{
-		[SerializeField] [HideInInspector] List<ColorUnit> mColors = null;
+		[SerializeField] [HideInInspector] List<ColorUnit>	mColors = null;
+		[SerializeField] [HideInInspector] List<SpriteUnit> mSprite = null;
 
 		protected override void Awake()
 		{
 			base.Awake();
 			if( Application.isPlaying )
 			{
-				SetColorOption( State.Normal );
+				UpdateState( State.Normal );
 			}
 		}
 
 		public void UpdateState( State state, bool applyChild = false )
 		{
 			SetColorOption( state );
+			SetSpriteOption( state );
 		}
 		public void UpdateState( int state, bool applyChild = false )
 		{
 			SetColorOption( state );
+			SetSpriteOption( state );
 		}
 
 		public void SetColorOption( State state )
@@ -50,6 +53,34 @@ namespace UI
 				if( state == (int)unit.state )
 				{
 					unit.Set<Image>( this );
+				}
+			}
+		}
+		public void SetSpriteOption( State state )
+		{
+			if( null == mSprite )
+				return;
+
+			foreach( SpriteUnit unit in mSprite )
+			{
+				if( state == unit.state )
+				{
+					UI.Utility.SetImage( this, unit.sprite );
+					break;
+				}
+			}
+		}
+		public void SetSpriteOption( int state )
+		{
+			if( null == mSprite )
+				return;
+
+			foreach( SpriteUnit unit in mSprite )
+			{
+				if( state == (int)unit.state )
+				{
+					UI.Utility.SetImage( this, unit.sprite );
+					break;
 				}
 			}
 		}

@@ -51,6 +51,6 @@ public class MainScene : MonoBehaviour, IScene
 	{
 		Utility.Log.Error( "[MainScene]", "Game Start" );
 
-		AppScene.Load( SceneType.GamePlayScene );
+		AppScene.Load( SceneType.OcclustionScene );
 	}
 }

@@ -6,7 +6,6 @@ public class GamePlayScene : MonoBehaviour, IScene
 {
 	public void Start()
 	{
-		AppScene.Inst.LoadScene( "OcclustionScene", true );
 	}
 
 	public void OnBack()
