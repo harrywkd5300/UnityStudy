@@ -12,6 +12,8 @@ public class MainScene : MonoBehaviour, IScene
 		{
 			AppMaster.Initialize();
 
+			AppScene.Push( this );
+
 			Initialize();
 		}
 		catch( System.Exception e )
