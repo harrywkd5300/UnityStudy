@@ -7,10 +7,11 @@ using UnityEngine;
 [CustomEditor( typeof( UI.UISprite ), true )]
 public class UISpritelEditor : UnityEditor.UI.ImageEditor
 {
-	public ReorderableList colorList;
-	public SerializedProperty colorProp;
+	public ReorderableList		colorList;
+	public SerializedProperty	colorProp;
 
-	public SerializedProperty spriteProp;
+	public ReorderableList		spriteList;
+	public SerializedProperty	spriteProp;
 
 	public override void OnInspectorGUI()
 	{
@@ -22,8 +23,10 @@ public class UISpritelEditor : UnityEditor.UI.ImageEditor
 		serializedObject?.Update();
 
 		DrawColorReorderbleList();
+		DrawSpriteReorderbleList();
 
 		colorList?.DoLayoutList();
+		spriteList?.DoLayoutList();
 
 		serializedObject?.ApplyModifiedProperties();
 	}
@@ -36,7 +39,7 @@ public class UISpritelEditor : UnityEditor.UI.ImageEditor
 		if( null == colorList )
 		{
 			colorList = new ReorderableList( serializedObject, colorProp );
-			colorList.elementHeight = 60f;
+			colorList.elementHeight = 30f;
 			colorList.drawElementCallback = ( Rect rect, int index, bool isActive, bool isFocused ) =>
 			{
 				SerializedProperty element = colorProp.GetArrayElementAtIndex( index );
@@ -65,6 +68,40 @@ public class UISpritelEditor : UnityEditor.UI.ImageEditor
 			colorList.drawHeaderCallback = ( Rect rect ) =>
 			{
 				EditorGUI.LabelField( rect, "Color" );
+			};
+		}
+	}
+	private void DrawSpriteReorderbleList()
+	{
+		if( null == spriteProp )
+			spriteProp = serializedObject.FindProperty( "mSprite" );
+
+		if( null == spriteList )
+		{
+			spriteList = new ReorderableList( serializedObject, spriteProp );
+			spriteList.elementHeight = 30f;
+			spriteList.drawElementCallback = ( Rect rect, int index, bool isActive, bool isFocused ) =>
+			{
+				SerializedProperty element = spriteProp.GetArrayElementAtIndex( index );
+				rect.height -= 4;
+				rect.y += 2;
+				EditorGUI.PropertyField( rect, element );
+			};
+			spriteList.onAddCallback = ( ReorderableList list ) =>
+			{
+				spriteProp.InsertArrayElementAtIndex( spriteProp.arraySize );
+				list.index = spriteProp.arraySize - 1;
+
+				SerializedProperty unitProp = spriteProp.GetArrayElementAtIndex( list.index );
+				if( null != unitProp )
+				{
+					SerializedProperty _sp = unitProp.FindPropertyRelative( "mState" );
+					if( null != _sp ) _sp.enumValueIndex = 0;
+				}
+			};
+			spriteList.drawHeaderCallback = ( Rect rect ) =>
+			{
+				EditorGUI.LabelField( rect, "Sprite" );
 			};
 		}
 	}

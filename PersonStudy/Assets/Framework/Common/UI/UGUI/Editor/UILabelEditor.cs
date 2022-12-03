@@ -34,7 +34,7 @@ public class UILabelEditor : UnityEditor.UI.TextEditor
 		if( null == colorList )
 		{
 			colorList = new ReorderableList( serializedObject, colorProp );
-			colorList.elementHeight = 60f;
+			colorList.elementHeight = 30f;
 			colorList.drawElementCallback = ( Rect rect, int index, bool isActive, bool isFocused ) =>
 			{
 				SerializedProperty element = colorProp.GetArrayElementAtIndex( index );

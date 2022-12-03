@@ -6,7 +6,14 @@ public class GamePlayScene : MonoBehaviour, IScene
 {
 	public void Start()
 	{
-		AppScene.Inst.LoadScene( "OcclustionScene", true );
+		try
+		{
+			AppScene.Push( this );
+		}
+		catch( System.Exception e )
+		{
+			Utility.Log.CrashProcess( e );
+		}
 	}
 
 	public void OnBack()
