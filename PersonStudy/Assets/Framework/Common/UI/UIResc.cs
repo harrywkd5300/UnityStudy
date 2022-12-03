@@ -28,7 +28,7 @@ public struct UIResc
 		if( string.IsNullOrEmpty( uiName ) )
 			return null;
 
-		GameObject go = AssetManager.Inst.LoadResources<GameObject>( string.Format( $"{uiContents}/{uiName}" ) );
+		GameObject go = AssetManager.Inst.LoadResources<GameObject>( uiContents, uiName );
 		if( go != null )
 		{
 			uiBase = go.GetComponent<UIBase>();

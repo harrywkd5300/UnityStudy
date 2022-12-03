@@ -166,7 +166,7 @@ static public partial class MainUI
 
 	static public bool Initialize()
 	{
-		GameObject goMain = AssetManager.Inst.MakeOBJ( "UI/Common/MainUI" );
+		GameObject goMain = AssetManager.Inst.MakeOBJ( "UI/Common", "MainUI" );
 		if( null == goMain )
 		{
 			Utility.Log.Error( "[MainUI]", "MainUI_UGUI object load failed!" );

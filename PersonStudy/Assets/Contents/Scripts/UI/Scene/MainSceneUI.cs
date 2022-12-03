@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MainSceneUI : UIBase
 {
+	[SerializeField] UI.UILabel			txt_Name = null;
+
 	public System.Action onClickAssetBundle;
 	public System.Action onClickAddressable;
 	public System.Action onClickGamePlay;
@@ -18,6 +19,11 @@ public class MainSceneUI : UIBase
 	public override bool Shuts()
 	{
 		return false;
+	}
+
+	public void Apply()
+	{
+
 	}
 
 	public void OnClickAssetBundleLoad()

@@ -8,7 +8,15 @@ namespace Utility
 
 	static public class Log
 	{
-		[Conditional( "_TBL_LOG_" ), Conditional( "UNITY_EDITOR" )]
+		[Conditional( "LOG" ), Conditional( "UNITY_EDITOR" )]
+		static public void Output( string tag, string format, params object[] args )
+		{
+			UnityEngine.Debug.LogFormat( "{0:f5}\t{1} {2}"
+				, UnityEngine.Time.realtimeSinceStartup
+				, tag
+				, string.Format( format, args )
+				);
+		}
 		static public void Warning( string tag, string format, params object[] args )
 		{
 			UnityEngine.Debug.LogWarningFormat( "{0:f5}\t{1} {2}"

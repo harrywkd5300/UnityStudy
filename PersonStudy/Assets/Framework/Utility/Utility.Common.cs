@@ -4,6 +4,15 @@ namespace Utility
 
 	static public class Common
 	{
+		static public string GetString( int stringID )
+		{
+			return StringTBL.GetString( stringID );
+		}
+		static public string GetString( int stringID, params object[] args )
+		{
+			return string.Format( GetString( stringID ), args );
+		}
+
 		/// <summary>
 		/// List에서 match 조건에 해당 되는 원소를 out 인자로 반환해준다.
 		/// </summary>

@@ -15,5 +15,4 @@ namespace UI
 		Custom5,
 		Custom6,
 	}
-
 }

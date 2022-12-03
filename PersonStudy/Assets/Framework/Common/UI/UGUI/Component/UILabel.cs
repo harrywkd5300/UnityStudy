@@ -24,14 +24,14 @@ namespace UI
 			SetColorOption( state );
 
 			if( applyChild == true )
-				UI.Utility.UpdateChildState( this.transform, state, applyChild );
+				Utility.UGUI.UpdateChildState( this.transform, state, applyChild );
 		}
 		public void UpdateState( int state, bool applyChild = false )
 		{
 			SetColorOption( state );
 
 			if( applyChild == true )
-				UI.Utility.UpdateChildState( this.transform, state, applyChild );
+				Utility.UGUI.UpdateChildState( this.transform, state, applyChild );
 		}
 
 		public void SetColorOption( State state )
