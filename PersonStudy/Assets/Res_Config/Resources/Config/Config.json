@@ -1,4 +1,5 @@
 {
-  "selected_config": "DEV",
-  "isLive": false
+  "isPatchMode": true,
+  "isAssetBundle": true,
+  "gameVersion": "0.1"
 }

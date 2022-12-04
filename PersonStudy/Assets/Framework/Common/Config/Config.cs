@@ -15,8 +15,10 @@ public class ConfigData
 
 public class Config
 {
-	public const string path = "Config";
-	public const string file = "Config";
+	public const string rootPath	= "./Assets/Res_Config/Resources/Config";
+	public const string rootfile	= "Config.json";
+	public const string path		= "Config";
+	public const string file		= "Config";
 
 	private ConfigData data;
 	public ConfigData appConfig

@@ -31,14 +31,31 @@ public partial class ConfigEditorWindow : EditorWindow
 		EditorGUILayout.Separator();
 		EditorGUILayout.BeginVertical( "box" );
 		{
-			GUI.color = Color.green;
-			EditorGUILayout.LabelField( "* Version Info" );
-			GUI.color = Color.white;
+			Utility.Editor.OnLayoutLabelField( Color.green, "* Version Info" );
 
 			EditorGUILayout.BeginVertical( "box" );
 			{
-				EditorGUILayout.LabelField( "* Game" );
-				GUILayout.Label( "v." + configData.gameVersion );
+				Utility.Editor.OnLayoutLabelField( Color.white, "* Game" );
+				Utility.Editor.OnLayoutLabelField( Color.white, "v." + configData.gameVersion );
+			}
+			EditorGUILayout.EndVertical();
+
+			EditorGUILayout.BeginVertical( "box" );
+			{
+				configData.isAssetBundle	= EditorGUILayout.Toggle( "AssetBundle", configData.isAssetBundle );
+				configData.isPatchMode		= EditorGUILayout.Toggle( "PatchMode", configData.isPatchMode );
+			}
+			EditorGUILayout.EndVertical();
+
+			EditorGUILayout.BeginVertical( "box" );
+			{
+				if( GUILayout.Button( new GUIContent( "Save" ), GUILayout.Width( 50f ) ) )
+				{
+					if( true == JsonWriter.Write( configData, Config.rootPath, Config.rootfile ) )
+					{
+						Utility.Editor.ShowMessageBox( " Save success!" );
+					}
+				}
 			}
 			EditorGUILayout.EndVertical();
 		}

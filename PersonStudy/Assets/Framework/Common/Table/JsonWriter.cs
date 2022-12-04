@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 public class JsonWriter
 {
-	public bool Write<T>( T target, string path, string file )
+	static public bool Write<T>( T target, string path, string file )
 	{
 		if( null != target )
 		{
