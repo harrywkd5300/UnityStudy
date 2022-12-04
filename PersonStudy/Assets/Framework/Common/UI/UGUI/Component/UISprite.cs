@@ -65,7 +65,7 @@ namespace UI
 			{
 				if( state == unit.state )
 				{
-					UI.Utility.SetImage( this, unit.sprite );
+					Utility.UGUI.SetImage( this, unit.sprite );
 					break;
 				}
 			}
@@ -79,7 +79,7 @@ namespace UI
 			{
 				if( state == (int)unit.state )
 				{
-					UI.Utility.SetImage( this, unit.sprite );
+					Utility.UGUI.SetImage( this, unit.sprite );
 					break;
 				}
 			}

@@ -42,6 +42,13 @@ namespace Utility
 			text.text = value;
 		}
 
+		//!< Image
+		static public void SetImage( Image image, Sprite sprite )
+		{
+			if( null != image )
+				image.sprite = sprite;
+		}
+
 		//!< Utility
 		static public void UpdateChildState( Transform root, UI.State updateState, bool applyChild )
 		{
