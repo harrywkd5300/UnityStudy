@@ -39,10 +39,7 @@ public class CanvasDepthManager
 
 		Camera camera = goRoot.GetComponentInChildren<Camera>();
 		if( null != camera )
-		{
-			UniversalAdditionalCameraData camData = Camera.main?.GetComponent<UniversalAdditionalCameraData>();
-			camData.cameraStack.Add( camera );
-		}
+			CameraManager.Inst.AddCameraStack( camera );
 
 		return true;
 	}
