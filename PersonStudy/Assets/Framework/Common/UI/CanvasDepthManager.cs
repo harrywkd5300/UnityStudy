@@ -10,6 +10,8 @@ public class CanvasDepthManager
 	public DepthManager			depthMgr		{ private set; get; }
 	public EventSystem			eventSystem		{ private set; get; }
 
+	private Camera				camera			= null;
+
 	public bool Initialize( GameObject root )
 	{
 		if( null == root )
@@ -37,11 +39,15 @@ public class CanvasDepthManager
 			}
 		}
 
-		Camera camera = goRoot.GetComponentInChildren<Camera>();
+		camera = goRoot.GetComponentInChildren<Camera>();
 		if( null != camera )
 			CameraManager.Inst.AddCameraStack( camera );
 
 		return true;
+	}
+	public void Destroy()
+	{
+		CameraManager.Inst.RemoveCameraStack( camera );
 	}
 
 	public Canvas GetCanvas()

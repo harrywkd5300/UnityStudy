@@ -5,156 +5,7 @@ static public partial class MainUI
 {
 	static public void ActiveScene( bool isActive )
 	{
-		//if( canvasCamera.goRoot.activeSelf != isActive )
-		//	canvasCamera.goRoot.SetActive( isActive );
 	}
-	static public void InitRoot()
-	{
-		if( null == canvasOverlay )
-		{
-			canvasOverlay = new CanvasDepthManager();
-			GameObject obj = GameObject.Find( "Root_Overlay" );
-			canvasOverlay.Initialize( obj );
-		}
-
-		if( null == canvasPopup )
-		{
-			canvasPopup = new CanvasDepthManager();
-			GameObject obj = GameObject.Find( "Root_Popup" );
-			canvasPopup.Initialize( obj );
-		}
-	}
-	/*
-	static public T ActiveUI<T>( eUIRootType rmType, UI type, UIResc resc, bool _active = false, bool _static = false ) where T : UIBase
-	{
-		return ActiveUI<T>( rmType, type, resc, resc.depth, _active, _static );
-	}
-
-	static public T ActiveUI<T>( eUIRootType rmType, UI type, UIResc resc, GameObject parent, bool _active = false, bool _static = false ) where T : UIBase
-	{
-		return ActiveUI<T>( rmType, type, resc, resc.depth, parent, _active, _static );
-	}
-	static public T ActiveUI<T>( eUIRootType rmType, UI type, UIResc resc, int depth, bool _active = false, bool _static = false ) where T : UIBase
-	{
-		if( null == UIManager.uiMainMgr )
-			Initialize();
-
-		T ui = UIManager.uiMainMgr.Active<T>( (int)type, resc, GetRootParent( rmType, depth ), false, true );
-		if( ui != null )
-		{
-			ui.SetActive( _active );
-			ui.SetStatic( _static );
-			ui.transform.SetAsLastSibling();
-
-			if( rmType != eUIRootType.Overlay )
-			{
-				Canvas[] arrCanvas = ui.GetComponentsInChildren<Canvas>();
-				if( null != arrCanvas )
-				{
-					for( int i = 0; i < arrCanvas.Length; ++i )
-					{
-						arrCanvas[ i ].sortingOrder = depth;
-					}
-				}
-
-				Camera[] arrCamera = ui.GetComponentsInChildren<Camera>();
-				if( null != arrCamera )
-				{
-					for( int i = 0; i < arrCamera.Length; ++i )
-					{
-						AddCameraStack( rmType, arrCamera[ i ], i );
-					}
-				}
-			}
-		}
-
-		return ui;
-	}
-
-	static public T ActiveUI<T>( eUIRootType rmType, UI type, UIResc resc, int depth, GameObject parent, bool _active = false, bool _static = false ) where T : UIBase
-	{
-		if ( null == UIManager.uiMainMgr )
-			Initialize();
-
-		T ui = UIManager.uiMainMgr.Active<T>( (int)type, resc, parent, false, true );
-		if ( ui != null )
-		{
-			ui.SetActive( _active );
-			ui.SetStatic( _static );
-			ui.transform.SetAsLastSibling();
-
-			if ( rmType != eUIRootType.Overlay )
-			{
-				Canvas[] arrCanvas = ui.GetComponentsInChildren<Canvas>();
-				if ( null != arrCanvas )
-				{
-					for ( int i = 0; i < arrCanvas.Length; ++i )
-					{
-						arrCanvas[ i ].sortingOrder = depth;						
-					}
-				}
-
-				Camera[] arrCamera = ui.GetComponentsInChildren<Camera>();
-				
-				if ( null != arrCamera )
-				{
-					for ( int i = 0; i < arrCamera.Length; ++i )
-					{
-						AddCameraStack( rmType, arrCamera[ i ], i );
-					}
-				}
-			}
-		}
-
-		return ui;
-	}
-
-	static public GameObject GetRootParent( eUIRootType rmType, int depth )
-	{
-		switch( rmType )
-		{
-		case eUIRootType.Camera:
-			{
-				ActiveScene( true );
-				return canvasCamera.LayerWithoutDepthUnit( depth );
-			}
-		case eUIRootType.Overlay:			return canvasOverlay.Layer( depth );
-		case eUIRootType.Box:				return canvasBox.LayerWithoutDepthUnit( depth );
-		case eUIRootType.Popup:				return canvasPopup.Layer( depth );
-		}
-
-		return null;
-	}
-	static public void AddCameraStack( eUIRootType rmType, Camera cam, int index )
-	{
-		if( null == cam || cam.GetComponent<UniversalAdditionalCameraData>().renderType != CameraRenderType.Overlay )
-			return;
-
-		UniversalAdditionalCameraData camData = baseCamera.GetComponent<UniversalAdditionalCameraData>();
-		camData.cameraStack.Remove( cam );
-		if( rmType == eUIRootType.Popup )
-		{
-			camData.cameraStack.Insert( camData.cameraStack.Count - 1, cam );
-		}
-		else if( rmType == eUIRootType.Camera || rmType == eUIRootType.Box )
-		{
-			if( false == cam.name.Contains( "_PP" ) )
-				cam.orthographicSize = 360;
-			for( int i = 0; i < camData.cameraStack.Count; ++i )
-			{
-				Camera camera = camData.cameraStack[ camData.cameraStack.Count - 1 - i ];
-				if( null != camera && camera.name.Contains( "Overlay" ) )
-				{
-					if( rmType == eUIRootType.Camera )
-						camData.cameraStack.Insert( camData.cameraStack.Count - 1 - i, cam );
-					else
-						camData.cameraStack.Insert( camData.cameraStack.Count - i + index, cam );
-					break;
-				}
-			}
-		}
-	}
-	*/
 }
 
 static public partial class MainUI
@@ -207,12 +58,30 @@ static public partial class MainUI
 
 		return true;
 	}
+	static public void InitRoot()
+	{
+		if( null == canvasOverlay )
+		{
+			canvasOverlay = new CanvasDepthManager();
+			GameObject obj = GameObject.Find( "Root_Overlay" );
+			canvasOverlay.Initialize( obj );
+		}
+
+		if( null == canvasPopup )
+		{
+			canvasPopup = new CanvasDepthManager();
+			GameObject obj = GameObject.Find( "Root_Popup" );
+			canvasPopup.Initialize( obj );
+		}
+	}
 	static public void Destroy()
 	{
 		if( UIManager.uiMainMgr == null )
 			return;
 
 		{
+			canvasOverlay?.Destroy();
+			canvasPopup?.Destroy();
 		}
 
 		GameObject.Destroy( UIManager.uiMainMgr.gameObject );

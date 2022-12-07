@@ -20,20 +20,14 @@ public class CameraManager : Singleton<CameraManager>
 
 		cameraData.cameraStack.Remove( cam );
 
-		if( is3D )
-		{
-			cameraData.cameraStack.Insert( 0, cam );
-		}
-		else
-		{
-			if( cameraData.cameraStack.Count == 0 )
-				cameraData.cameraStack.Insert( 0, cam );
-			else
-				cameraData.cameraStack.Insert( cameraData.cameraStack.Count - 1, cam );
-		}
+		if( is3D )		cameraData.cameraStack.Insert( 0, cam );
+		else			cameraData.cameraStack.Add( cam );
 	}
-	public void RemoveCameraStack( Camera cam)
+	public void RemoveCameraStack( Camera cam )
 	{
+		if( null == cam )
+			return;
+
 		cameraData.cameraStack.Remove( cam );
 	}
 }
