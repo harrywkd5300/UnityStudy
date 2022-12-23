@@ -1,0 +1,16 @@
+>> AUTO BUILD SETTING : 2021.04.27 <<
+
+ * BuildType				= "AssetBundle, PatchOutput"
+ * BuildTarget				= "Android"
+ * ProjectType				= "HC_DEV"
+
+ * BundleOptions			= "ChunkBasedCompression"
+ * BundleOutputPath			= "PatchResources/assetbundles/Android"
+
+ * PatchOutputPath			= "PatchResources/assetbundles/Android"
+ * PatchListFile			= "PatchList.json"
+ * PatchRevision			= "[_NEXT_REV_:D2]"
+
+ * PatchRootURL			= "https://gonggames-bucket.s3.ap-southeast-1.amazonaws.com"
+ * PatchSubURL			= "AOS"
+ * PatchFileExtension			= "abf"

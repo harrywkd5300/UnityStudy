@@ -1,0 +1,73 @@
+namespace SomeContent	//!< Please Modify namespace.
+{
+	using Net;
+	using System.Collections.Generic;
+
+	public partial class #SCRIPTNAME#
+	{
+		//private SomeContentScene			scene			{ set; get; }
+		//private SomeContentSceneUI		sceneUI			{ get { return scene.sceneUI; } }
+		private NetworkManager		netMgr			{ get { return NetworkManager.Inst; } }
+		private PacketHandlerEx		handler			{ set; get; }
+
+		public bool Initialize( IScene obj )
+		{
+			scene = obj as MarketScene;
+
+			if ( null == scene )
+			{
+				Log.Break( "scene object is null pointer!" );
+				return false;
+			}
+
+			//handler = new PacketHandlerEx( "[SomeContent]" );		//!< Please Modify PacketHandlerEx Name.
+			//{
+			//	RegisterRecvActions( handler );
+			//}
+			netMgr.RegistRecvCallback( handler.OnRecvMessageEx );
+			return true;
+		}
+		public void Destroy()
+		{
+			scene = null;
+
+			netMgr.RegistRecvCallback( (NetworkCallBack.OnRecvMessage) null );
+			if ( null != handler )
+			{
+				handler.Cleanup();
+				handler = null;
+			}
+		}
+
+		private void RegisterRecvActions( PacketHandlerEx handler )
+		{
+			//!< SUB.HANDLER
+			handler.SetSubHandler( CProtocol.globalHandler );
+
+			//!< G-SERVER
+			//handler.Register( PROTOCOL_TYPE.A_TRADE_LOAD, OnRecv_A_TRADE_LOAD );		//!< For Example to register packet.
+		}
+	}
+
+	public partial class #SCRIPTNAME#
+	{
+		/* For Example how to define Send / Recv */
+		//public void OnSend_R_TRADE_LOAD()
+		//{
+		//		Net.GProtocol.OnSend_R_TRADE_LOAD();
+		//}
+		//public void OnRecv_A_TRADE_LOAD( PacketReader reader )
+		//{
+		//		Result result = GProtocol.OnRecv_A_TRADE_LOAD( reader );
+		//		if ( result.isOK )
+		//		{
+		//			scene.OnRefresh( RefreshID.TRADE_LOAD );
+		//			sceneUI.AdjustStandardDate();
+		//		}
+		//		else
+		//		{
+		//			Net.Message.OnAlert( result );
+		//		}
+		//}
+	}
+}

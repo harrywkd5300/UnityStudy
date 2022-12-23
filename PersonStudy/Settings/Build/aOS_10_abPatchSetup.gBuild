@@ -1,0 +1,7 @@
+>> AUTO BUILD SETTING : 2021.04.08 <<
+
+ * BuildType			= "AssetBundle,NonBuild"
+ * BundleRemoveAll		= "True"
+ * BundleSetupExclude	= "_exclude_"
+ * BundleSetupFolder	= "Assets/_Module_/Contents/AssetBundles/Resources"
+ * BundleSetupScenes	= "Assets/_Module_/Contents/AssetBundles/Scenes"

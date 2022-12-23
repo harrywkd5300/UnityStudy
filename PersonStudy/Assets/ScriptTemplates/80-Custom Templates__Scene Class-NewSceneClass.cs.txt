@@ -1,0 +1,113 @@
+namespace SomeContent //!< Please Modify namespace.
+{
+	using System.Collections;
+	using System.Collections.Generic;
+	using UnityEngine;
+
+	public enum SceneType		//!< SceneType for this scene.
+	{
+		Max
+	}
+
+	public enum PopupType		//!< PopupType for this scene.
+	{
+		None = SceneType.Max,
+
+		Max
+	}
+
+	public enum RefreshID		//!< RefreshID on packet receive.
+	{
+		Max
+	}
+
+	public class #SCRIPTNAME# : MonoBehaviour, IScene
+	{
+		public #SCRIPTNAME#UI			sceneUI			{ private set; get; }
+		public #SCRIPTNAME#Protocol		sceneProtocol	{ private set; get; }
+		public #SCRIPTNAME#Manager		sceneMgr		{ private set; get; }
+
+		void Start()
+		{
+			AppMaster.Checking();
+			AppScene.Push( this );
+
+			Screen.sleepTimeout = SleepTimeout.NeverSleep;
+			Initialize();
+		}
+		void OnDestroy()
+		{
+			Destroy();
+		}
+		private void Destroy()
+		{
+			if ( sceneMgr != null )
+			{
+				sceneMgr.Destroy();
+				sceneMgr = null;
+			}
+
+			if ( sceneProtocol != null )
+			{
+				sceneProtocol.Destroy();
+				sceneProtocol = null;
+			}
+
+			if ( sceneUI != null )
+			{
+				sceneUI = null;
+				MainUI.CleanUIs();
+			}
+		}
+
+		private bool Initialize()
+		{
+			PacketChecker.UnlockAll();
+
+			sceneMgr = new #SCRIPTNAME#Manager();
+			sceneMgr.Initialize( this );
+
+			sceneProtocol = new #SCRIPTNAME#Protocol();
+			sceneProtocol.Initialize( this );
+
+			sceneUI = MainUI.ActiveUI<#SCRIPTNAME#UI>( UI.#SCRIPTNAME#, uiSceneRC, true, false );
+			if ( null == sceneUI )
+			{
+				Log.Break( "sceneUI create failed! : {0}", uiSceneRC );
+			}
+			else
+			{
+				
+			}
+
+			OnChange( (SceneType)AppScene.subSceneType, true );
+
+			return true;
+		}
+
+		public bool OnBack()
+		{
+			if( null == sceneMgr )
+				return false;
+
+			return sceneMgr.OnBack();
+		}
+		public bool OnChange( SceneType subScene, bool force = false )
+		{
+			if ( null == sceneMgr )
+				return false;
+
+			return sceneMgr.Change( subScene, force );
+		}
+
+		public bool OnRefresh( RefreshID refreshID, params object[] args )
+		{
+			if ( null == sceneMgr )
+				return false;
+
+			return sceneMgr.OnRefresh( refreshID, args );
+		}
+	}
+}
+
+

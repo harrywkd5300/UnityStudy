@@ -1,0 +1,16 @@
+>> AUTO BUILD SETTING : 2021.04.12 <<
+ * BuildType				= "AppBuild"
+ * BuildTargetGroup			= "iOS"
+ * BuildTarget				= "iOS"
+ * BuildOptions				= "CompressWithLz4, StrictMode"
+ ///* BuildVersion			= "0.1.2"
+ ///* BuildVersionCode		= "123"
+ * LocationPathName			= "_Builds_/[_TAR_GROUP_]/iOS_v[_VER_DOT_X_]_[_VER_CODE_]"
+ * BuildAppBundle			= "False"
+ ///* BuildScriptSymbols	= "_01_"
+ ///* BuildSkipScenes		= "abScene"
+ * BundleSetupScenes		= "Assets/_Module_/Contents/AssetBundles/Scenes"
+ * BundleSetupFolder		= "Assets/_Module_/Contents/AssetBundles/Resources"
+
+ * AutoBuilder				= "AppBuild"
+ ///* CopyFile					= "{ "src" : "_Builds_/[_TAR_GROUP_]/iOS_v[_VER_DOT_X_]_[_VER_CODE_].apk" , "dest" : "_Builds_/{1}/[_NOW_:yyyyMMdd.HHmmss]/{0}" }"

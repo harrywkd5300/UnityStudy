@@ -1,0 +1,53 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class #SCRIPTNAME# : Singleton<#SCRIPTNAME#>, ITable
+{
+	public List<GameObject> lstObj {private set; get;}
+
+	protected #SCRIPTNAME#()
+	{
+		lstObj = new List<GameObject>();
+	}
+	public override string ToString()
+	{
+		return string.Format( "{0}({1})", base.ToString(), lstObj.Count );
+	}
+	public bool Initialize( bool isBinary )
+	{
+		return LoadData( "TBL", "!!!TBLNAME!!!" );			//!< Please put in tbl txt filename.
+	}
+	public void Destroy()
+	{
+		lstObj.Clear();
+	}
+
+	private bool LoadData( string path, string file )
+	{
+		using( Table.CSVReader tr = new Table.CSVReader() )
+		{
+			if( true != tr.Open( path, file ) )
+				return false;
+
+			string[] texts;
+			while( tr.ReadLine( out texts ) )
+			{
+				//AddData( new SomeData( texts ) );
+			}
+
+			tr.Close();
+		}
+		return true;
+	}
+	private void AddData( /* SomeData data */ )
+	{
+		//lstObj.Add( data );
+	}
+
+	/* static public List<SomeData> GetDatas()
+	{
+		//!< Please put in gather data logics.
+
+		return data;
+	} */
+}

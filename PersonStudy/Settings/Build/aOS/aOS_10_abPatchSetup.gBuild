@@ -1,0 +1,7 @@
+>> AUTO BUILD SETTING : 2021.04.08 <<
+
+ * BuildType			= "AssetBundle,NonBuild"
+ * BundleRemoveAll		= "True"
+ * BundleSetupExclude	= "ExcludeBuild"
+ * BundleSetupFolder		= "Assets/Res_Patch/Resources"
+/// * BundleSetupScenes	= "Assets/Contents/Scenes/Stadium"

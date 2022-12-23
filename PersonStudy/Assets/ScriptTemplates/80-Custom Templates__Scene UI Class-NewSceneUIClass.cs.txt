@@ -1,0 +1,80 @@
+namespace SomeContent //!< Please Modify namespace.
+{
+	using Gong.UI;
+	using System.Collections.Generic;
+	using UnityEngine;
+
+	public class #SCRIPTNAME# : UIManager
+	{
+		[SerializeField] GameObject		rootScene			= null;
+		[SerializeField] GameObject		rootPopup			= null;
+
+		public override void Init()
+		{
+			base.NewBases( (int) PopupType.Max );
+			base.Init();
+			{
+				MainUI.SetScenePopupDepth( rootPopup );
+			}
+		}
+		public override void Clear()
+		{
+			base.Clear();
+		}
+		public override bool Shuts()
+		{
+			AppSound.PlayUISound( UIEffectSound.Cancel );
+			return base.Shuts();
+		}
+
+		private void OnChange( int sceneNo )
+		{
+			if ( onChange != null )
+				onChange( (SceneType) sceneNo );
+		}
+
+		public T ActiveUI<T>( SceneType type, bool isActive = true ) where T : UIBase
+		{
+			T ui = Active<T>( (int) type, GetResc( type ), rootScene, false, true );
+			if ( ui != null )
+				ui.SetActive( isActive );
+
+			return ui;
+		}
+		private UIResc GetResc( SceneType type )
+		{
+			if ( type >= SceneType.Max )
+			{
+				return new UIResc( 0 );
+			}
+			else
+			{
+				return new UIResc( "UIs/SomeContent/SubSceneUIs", $"{type.ToString()}UI" );		//!< Please Modify file path.
+			}
+		}
+
+		public T ActiveUI<T>( PopupType type, bool isActive = true ) where T : UIBase
+		{
+			T ui = Active<T>( (int) type, GetResc( type ), rootPopup, false, true );
+			if ( ui != null )
+			{
+				ui.SetActive( isActive );
+				ui.transform.SetAsLastSibling();
+			}
+			return ui;
+		}
+		private UIResc GetResc( PopupType type )
+		{
+			if ( type >= PopupType.Max )
+			{
+				return new UIResc( 0 );
+			}
+			else
+			{
+				return new UIResc( "UIs/SomeContent/PopupUIs", $"{type.ToString()}PopupUI" );		//!< Please Modify file path.
+			}
+		}
+	}
+}
+
+

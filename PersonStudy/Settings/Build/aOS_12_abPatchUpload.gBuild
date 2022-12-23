@@ -1,0 +1,8 @@
+>> AUTO BUILD SETTING : 2021.04.08 <<
+
+ * BuildType			= "Upload"
+ * UploadDomain			= "ftp://ggbundle.gonggames.com:8921"
+ * UploadUserName		= "rnduser"
+ * UploadPassword		= "rnddbwj12#$"
+ * UploadPath			= "{"src":"_Bundles_/aOS/v[_VER_DOT_X_]/PatchList.json","url":"Modules/Build/Bundles/{1}/aOS/{0}"}"
+ * UploadPath			= "{"src":"_Bundles_/aOS/v[_VER_DOT_X_]/[_LAST_REV_:D2]","url":"Modules/Build/Bundles/{1}/aOS/{0}"}"

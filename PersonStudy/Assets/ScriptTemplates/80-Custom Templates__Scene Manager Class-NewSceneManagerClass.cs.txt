@@ -1,0 +1,82 @@
+namespace SomeContent //!< Please Modify namespace.
+{
+	public class SubScene : TSceneManager<SceneType>.IScene
+	{
+		//!< Please Modify Member's name.
+		//protected SomeContentScene				scene			{ private set; get; }
+		//protected SomeContentSceneUI			sceneUI			{ get { return ( null == scene ) ? null : scene.sceneUI; } }
+		//protected SomeContentSceneProtocol		sceneProtocol	{ get { return ( null == scene ) ? null : scene.sceneProtocol; } }
+		
+		public SceneType				sceneType		{ private set; get; }
+		public bool						isRootScene		{ private set; get; }
+		public bool						isBackScene		{ private set; get; }
+
+		public SubScene( /* SomeContentScene scene */, SceneType type, bool isRoot, bool isBack )
+		{
+			this.scene			= scene;
+			this.sceneType		= type;
+			this.isRootScene	= isRoot;
+			this.isBackScene	= isBack;
+		}
+
+		public virtual void Enter() { AppScene.Change( (int) this.sceneType ); }
+		public virtual void Execute() { }
+		public virtual void Exit() { }
+		public virtual bool Back() { return false; }
+		public virtual bool Refresh( RefreshID refreshID, params object[] args ) { return false; }
+	}
+}
+
+namespace SomeContent //!< Please Modify namespace.
+{
+	public class #SCRIPTNAME# : TSceneManager<SceneType>
+	{
+		public bool Initialize( /* SomeContentScene scene */ )		//!< Please Modify Parameter Name.
+		{
+			if ( null == scene )
+			{
+				Log.Break( "scene object is null pointer" );
+				return false;
+			}
+
+			base.Initialize();
+			{
+				System.Action<SubScene> add = ( obj ) => { this.Add( obj.sceneType, obj ); };
+
+				//!< Example For Add SubScenes.
+				//add( new SomeSubContentScene( scene, true, false ) );
+			}
+			return true;
+		}
+		public new void Destroy()
+		{
+			base.Destroy();
+		}
+
+		public bool OnBack()
+		{
+			SubScene subScene = currentObject as SubScene;
+			if ( null != subScene &&
+				true == subScene.Back() )
+			{
+				Log.Output( "scene back active : ", subScene.sceneType );
+				return true;
+			}
+
+			return Return();
+		}
+		public bool OnRefresh( RefreshID refreshID, params object[] args )
+		{
+			SubScene subScene = currentObject as SubScene;
+			if ( null != subScene &&
+				true == subScene.Refresh( refreshID, args ) )
+			{
+				Log.Output( "scene refresh success! : {0}, {1}", subScene.sceneType, refreshID );
+				return true;
+			}
+
+			Log.Error( "scene refresh failed! : {0}, {1}", subScene.sceneType, refreshID );
+			return false;
+		}
+	}
+}
