@@ -2,6 +2,7 @@
 using UnityEditor.UI;
 using UnityEditorInternal;
 using UnityEngine;
+using UI;
 
 [CanEditMultipleObjects]
 [CustomEditor( typeof( UI.UISprite ), true )]
@@ -12,6 +13,15 @@ public class UISpritelEditor : UnityEditor.UI.ImageEditor
 
 	public ReorderableList		spriteList;
 	public SerializedProperty	spriteProp;
+
+	UISprite t = null;
+
+	protected override void OnEnable()
+	{
+		base.OnEnable();
+
+		t = target as UISprite;
+	}
 
 	public override void OnInspectorGUI()
 	{
@@ -24,7 +34,7 @@ public class UISpritelEditor : UnityEditor.UI.ImageEditor
 
 		DrawColorReorderbleList();
 		DrawSpriteReorderbleList();
-
+	
 		colorList?.DoLayoutList();
 		spriteList?.DoLayoutList();
 

@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 namespace UI
 {
 	public class UISprite : Image, IStateHandler
 	{
-		[SerializeField] [HideInInspector] List<ColorUnit>	mColors = null;
-		[SerializeField] [HideInInspector] List<SpriteUnit> mSprite = null;
+		[SerializeField] [HideInInspector] List<ColorUnit>		mColors = null;
+		[SerializeField] [HideInInspector] List<SpriteUnit>		mSprite = null;
+
+		public bool			mUseAtlas	= true;
+		public SpriteAtlas	atlas		= null;
 
 		protected override void Awake()
 		{
