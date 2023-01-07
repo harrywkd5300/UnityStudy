@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Common
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 50
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 99b52956e5c204144a5306ebe89760c1, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: bac8b4305cd2440a4a7d2238e0edec25, type: 3}
+  - {fileID: 21300000, guid: ad9095d0ab6f44ef7a7bba834f0ccaf3, type: 3}
+  - {fileID: 21300000, guid: 978a4781126aa4fba8d364db8fb78a47, type: 3}
+  - {fileID: 21300000, guid: 5b10a6d23f58240f5b2e426c3f195814, type: 3}
+  - {fileID: 21300000, guid: 940831732dabc4fdabf692b6d2606470, type: 3}
+  - {fileID: 21300000, guid: 6b26dac3ed2e0434cafd560894392498, type: 3}
+  - {fileID: 21300000, guid: e216e7d3accdd4fe79bd3422c1176ea7, type: 3}
+  - {fileID: 21300000, guid: c294151649b2149da94b24153bebe790, type: 3}
+  - {fileID: 21300000, guid: dbc2ae76d59af4819aa135c63a0a242f, type: 3}
+  - {fileID: 21300000, guid: aa64c227c7a8f454c97d63236b5297cb, type: 3}
+  - {fileID: 21300000, guid: c82665b7d61f948709353ad25d7a380e, type: 3}
+  - {fileID: 21300000, guid: 43c5f109e5763447b9d28b34bf36b81b, type: 3}
+  - {fileID: 21300000, guid: fb12fcaa622b742479dcc6d379017c84, type: 3}
+  - {fileID: 21300000, guid: 9e7f2d9bcda8b4a81b18c7f7e8fadc8f, type: 3}
+  - {fileID: 21300000, guid: 51e5b3ab53a9647fcb6150cdcf92bb22, type: 3}
+  - {fileID: 21300000, guid: 690c7adcf8bcd44279eefcbad1ea4d7b, type: 3}
+  - {fileID: 21300000, guid: 86867a4eb7b804857a1f19a1c6cfdf8a, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Btn_Circle_00
+  - Btn_Circle_120_Line
+  - Btn_Circle_70
+  - Btn_Circle_190_base
+  - Btn_Circle_188
+  - Btn_Circle_70_Line
+  - Btn_SideButton_Right
+  - Btn_Rectangle02_White
+  - Btn_Circle_190_line
+  - Btn_SideButton_Inner
+  - Btn_Circle_120
+  - Btn_Basic_Circle_White
+  - Btn_SideButton_Left
+  - Btn_Circle_01_2
+  - Btn_Square
+  - Btn_Basic_Square_White
+  - Btn_Circle_01_1
+  m_RenderDataMap: {}
+  m_Tag: Common
+  m_IsVariant: 0
